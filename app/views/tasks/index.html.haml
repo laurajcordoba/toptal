@@ -1,0 +1,9 @@
+.container
+  %h3 Listing tasks
+  / = link_to 'New task', new_task_path, remote: true, class: 'btn'
+  %br
+  %br
+  %table.table.table-condensed.table-hover#todo-table
+    = render partial: 'tasks/task_table', locals: { tasks: @tasks }
+  #form.form-actions.well
+    = render partial: 'form'

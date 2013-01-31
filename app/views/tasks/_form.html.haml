@@ -1,0 +1,17 @@
+%h3 Task
+= form_for @task || current_user.tasks.new(), remote: true, html: {id: 'form-new-task'} do |f|
+  = f.text_field :description, placeholder: 'Description'
+  = f.label :priority
+  = select 'task', 'priority', Task::PRIORITY.collect{ |task| [task, task]}
+  = f.label :due_date
+  = f.text_field :due_date, class: 'datepicker'
+  = f.label :completed
+  = f.check_box :completed, disabled: true
+
+  %br
+  %br
+  .actions
+    = f.submit (@task.new_record? ? 'Create' : 'Update'), class: 'btn btn-primary', id: 'js-commit'
+
+:javascript  
+  $(".datepicker").datepicker({format: 'yyyy-mm-dd'});

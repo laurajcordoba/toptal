@@ -1,0 +1,19 @@
+%thead
+  %tr
+    %th Description
+    %th= sort_link(:due_date, class: 'sort-link')
+    %th= sort_link(:priority, class: 'sort-link')
+    %th Actions
+%tbody
+  - @tasks.each do |task|
+    %tr{id: "task-#{task.id}"}
+      %td= task.description
+      %td= task.due_date.strftime("%Y-%m-%d") unless task.due_date.blank?
+      %td= task.priority
+      %td
+        = link_to toggle_task_path(task), method: :put, remote: true do
+          %i.icon-ok
+        = link_to edit_task_path(task), remote: true do
+          %i.icon-pencil
+        = link_to task, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do
+          %i.icon-trash

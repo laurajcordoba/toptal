@@ -1,0 +1,9 @@
+%h3 Home
+
+.well
+  %h5 Please sign in or sign up with some of these users:
+
+  - @users.each do |user|
+    %p
+      %b User: 
+      #{user.email}

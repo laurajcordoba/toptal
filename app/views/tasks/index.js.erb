@@ -1,0 +1,4 @@
+$('#todo-table').html("<%= escape_javascript(render partial: 'tasks/task_table', locals: {tasks: @tasks}) %>")
+<% if params[:reset] %>
+  $('#form').html("<%= escape_javascript(render partial: 'tasks/form') %>")
+<% end %>

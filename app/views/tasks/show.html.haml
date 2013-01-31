@@ -1,0 +1,22 @@
+.container
+  %h1 Task
+  %p#notice= notice
+  
+  %h4 Description:
+  = @task.description
+  %br
+  
+  %h4 Priority
+  = @task.priority
+  %br
+  
+  %h4 Due date
+  = @task.due_date
+  %br
+  
+  %h4 Completed
+  = @task.completed
+  %br
+
+  = link_to 'Edit', edit_task_path(@task), class: 'btn btn-primary'
+  = link_to 'Back', tasks_path, class: 'btn btn-primary'
